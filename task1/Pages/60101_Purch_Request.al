@@ -39,6 +39,7 @@ page 60101 "Purchase Request"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Status field.';
+
                 }
             }
 
@@ -49,4 +50,62 @@ page 60101 "Purchase Request"
             }
         }
     }
+
+    actions
+    {
+        area(Reporting)
+        {
+            action("Purchase Request Report")
+            {
+                ApplicationArea = All;
+                Image = PrintReport;
+                Promoted = true;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+
+                begin
+                    //Status := "Open";
+                    PutchReqHead.Reset();
+                    PutchReqHead.SetCurrentKey("No.");
+                    PutchReqHead.SetRange("No.", rEC."No.");
+                    if PutchReqHead.FindFirst() then begin
+                        if PutchReqHead.Status = PutchReqHead.Status::Open then
+                            Error('Document %1 Should be Released', Rec."No.")
+                        else begin
+                            Report.RunModal(60100, true, true, PutchReqHead);
+
+                        end;
+                    end;
+                    // PutchReqHead.SetRange(Status, rec.Status);
+
+                    // // if (PutchReqHead.Status = )
+                    // // while (PutchReqHead.Status)
+
+
+                end;
+            }
+        }
+    }
+
+
+
+
+
+    // trigger OnInit()
+    // var
+    //     myInt: Integer;
+    // begin
+    //     if (PutchReqHead.Status = PutchReqHead.Status::Released) then
+    //     Error('Can not Edit document after Released')
+    //     else begin
+    //         Page.RunModal()
+    //     end;
+
+
+    // end;
+
+    var
+        PutchReqHead: Record "Purchase Request Header";
+
 }

@@ -37,12 +37,58 @@ table 60101 "Purchase Request Line"
             TableRelation = if (Type = const(Item)) Item else
             if (Type = const("GL Account")) "G/L Account";
 
+            trigger OnValidate()
+            var
+                item: Record Item;
+                GLRec: Record "G/L Account";
+            begin
+                if Type = Type::Item then begin
+                    item.Get("No.");
+                    Description := item.Description;
+                end;
+                if Type = Type::"GL Account" then begin
+                    GLRec.get("No.");
+                    Description := GLRec.Name;
+                end;
+            end;
+
+            // trigger OnValidate()
+            // var
+            //     // myInt: Integer;
+            //     purchLineRec: Record "Purchase Request Line";
+            //     itemRec: Record Item;
+            //     glAcc: Record "G/L Account";
+            // begin
+            //     purchLineRec.Get("No.");
+            //     // if(purchLineRec.Type = 'Item') then 
+            //     //Description := itemRec.Description;
+            //     //Description := glAcc.;
+
+
+
+            // end;
+
+            // trigger OnValidate()
+            // var
+            //     purchLineRec : Record "Purchase Request Line";
+            //     itemRec : Record Item;
+            //     glAcc : Record "G/L Account";
+            // begin
+            //     purchLineRec.Get("No.");
+            //     purchLineRec.Get(SystemModifiedBy);
+            //     Description = if (Type = const(itemRec))
+
+            // end;
+
 
         }
         field(5; "Description"; Text[100])
         {
             Caption = 'Description';
             DataClassification = ToBeClassified;
+            Editable = false;
+
+
         }
         field(6; Quantity; Decimal)
         {
@@ -75,7 +121,5 @@ table 60101 "Purchase Request Line"
             Clustered = true;
         }
     }
-
-
 
 }
