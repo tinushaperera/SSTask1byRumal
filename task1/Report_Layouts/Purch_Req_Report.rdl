@@ -11,88 +11,6 @@
       <rd:DataSourceID>1786ff62-0c8c-4033-8220-25d1c019df99</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="No">
-          <DataField>No</DataField>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-        </Field>
-        <Field Name="VendorNo">
-          <DataField>VendorNo</DataField>
-        </Field>
-        <Field Name="VendorName">
-          <DataField>VendorName</DataField>
-        </Field>
-        <Field Name="DocumentDate">
-          <DataField>DocumentDate</DataField>
-        </Field>
-        <Field Name="Status">
-          <DataField>Status</DataField>
-        </Field>
-        <Field Name="compName">
-          <DataField>compName</DataField>
-        </Field>
-        <Field Name="compAddress1">
-          <DataField>compAddress1</DataField>
-        </Field>
-        <Field Name="compAddress2">
-          <DataField>compAddress2</DataField>
-        </Field>
-        <Field Name="compCity">
-          <DataField>compCity</DataField>
-        </Field>
-        <Field Name="compPhone">
-          <DataField>compPhone</DataField>
-        </Field>
-        <Field Name="compFax">
-          <DataField>compFax</DataField>
-        </Field>
-        <Field Name="compEmail">
-          <DataField>compEmail</DataField>
-        </Field>
-        <Field Name="compPicture">
-          <DataField>compPicture</DataField>
-        </Field>
-        <Field Name="compWebSite">
-          <DataField>compWebSite</DataField>
-        </Field>
-        <Field Name="Type">
-          <DataField>Type</DataField>
-        </Field>
-        <Field Name="No_">
-          <DataField>No_</DataField>
-        </Field>
-        <Field Name="DescriptionLine">
-          <DataField>DescriptionLine</DataField>
-        </Field>
-        <Field Name="Quantity">
-          <DataField>Quantity</DataField>
-        </Field>
-        <Field Name="QuantityFormat">
-          <DataField>QuantityFormat</DataField>
-        </Field>
-        <Field Name="Unit_Price">
-          <DataField>Unit_Price</DataField>
-        </Field>
-        <Field Name="Unit_PriceFormat">
-          <DataField>Unit_PriceFormat</DataField>
-        </Field>
-        <Field Name="Amount">
-          <DataField>Amount</DataField>
-        </Field>
-        <Field Name="AmountFormat">
-          <DataField>AmountFormat</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -1121,7 +1039,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>7.31379cm</Top>
+            <Top>8.10754cm</Top>
             <Left>0.29545cm</Left>
             <Height>3.82792cm</Height>
             <Width>17.85471cm</Width>
@@ -1152,9 +1070,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox38</rd:DefaultName>
-            <Top>6.08224cm</Top>
-            <Left>0.28712cm</Left>
-            <Height>0.94932cm</Height>
+            <Top>6.26745cm</Top>
+            <Left>0.3224cm</Left>
+            <Height>1.23155cm</Height>
             <Width>17.82776cm</Width>
             <ZIndex>14</ZIndex>
             <Style>
@@ -1317,7 +1235,7 @@
                   <TextRun>
                     <Value>=Globals!ExecutionTime</Value>
                     <Style>
-                      <Format>d</Format>
+                      <Format>g</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1361,12 +1279,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1406,4 +1318,86 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="No">
+          <DataField>No</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="VendorNo">
+          <DataField>VendorNo</DataField>
+        </Field>
+        <Field Name="VendorName">
+          <DataField>VendorName</DataField>
+        </Field>
+        <Field Name="DocumentDate">
+          <DataField>DocumentDate</DataField>
+        </Field>
+        <Field Name="Status">
+          <DataField>Status</DataField>
+        </Field>
+        <Field Name="compName">
+          <DataField>compName</DataField>
+        </Field>
+        <Field Name="compAddress1">
+          <DataField>compAddress1</DataField>
+        </Field>
+        <Field Name="compAddress2">
+          <DataField>compAddress2</DataField>
+        </Field>
+        <Field Name="compCity">
+          <DataField>compCity</DataField>
+        </Field>
+        <Field Name="compPhone">
+          <DataField>compPhone</DataField>
+        </Field>
+        <Field Name="compFax">
+          <DataField>compFax</DataField>
+        </Field>
+        <Field Name="compEmail">
+          <DataField>compEmail</DataField>
+        </Field>
+        <Field Name="compPicture">
+          <DataField>compPicture</DataField>
+        </Field>
+        <Field Name="compWebSite">
+          <DataField>compWebSite</DataField>
+        </Field>
+        <Field Name="Type">
+          <DataField>Type</DataField>
+        </Field>
+        <Field Name="No_">
+          <DataField>No_</DataField>
+        </Field>
+        <Field Name="DescriptionLine">
+          <DataField>DescriptionLine</DataField>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+        </Field>
+        <Field Name="QuantityFormat">
+          <DataField>QuantityFormat</DataField>
+        </Field>
+        <Field Name="Unit_Price">
+          <DataField>Unit_Price</DataField>
+        </Field>
+        <Field Name="Unit_PriceFormat">
+          <DataField>Unit_PriceFormat</DataField>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+        </Field>
+        <Field Name="AmountFormat">
+          <DataField>AmountFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

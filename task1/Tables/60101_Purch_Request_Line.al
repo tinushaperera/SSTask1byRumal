@@ -3,6 +3,8 @@ table 60101 "Purchase Request Line"
     Caption = 'Purchase Request Line';
     DataClassification = ToBeClassified;
 
+
+
     fields
     {
         field(1; "Document No."; Code[20])
@@ -12,16 +14,26 @@ table 60101 "Purchase Request Line"
 
             // trigger OnValidate()
             // var
-            //     myInt: Integer;
+            // //lnNo: Integer;
             // begin
+            //     // lnNo := 1;
+
+            //     if "Line No." = ' ' then
+            //         "Line No." := 1
+            //     else
+            //         LstLineNoRec.Get("Line No.");
             //     "Line No." := "Line No." + 1;
             // end;
+
+
         }
         field(2; "Line No."; Integer)
         {
             Caption = 'Line No.';
             DataClassification = ToBeClassified;
-            AutoIncrement = true;
+
+
+            //AutoIncrement = true;   
         }
         field(3; "Type"; Option)
         {
@@ -94,6 +106,11 @@ table 60101 "Purchase Request Line"
         {
             Caption = 'Quantity';
             DataClassification = ToBeClassified;
+            trigger OnValidate()
+
+            begin
+                Amount := Quantity * "Unit Price";
+            end;
         }
         field(7; "Unit Price"; Decimal)
         {
@@ -104,12 +121,79 @@ table 60101 "Purchase Request Line"
             begin
                 Amount := Quantity * "Unit Price";
             end;
+
+
+
         }
         field(8; Amount; Decimal)
         {
             Caption = 'Amount ';
             DataClassification = ToBeClassified;
             Editable = false;
+
+            trigger OnValidate()
+            var
+                PurchLineRec: Record "Purchase Request Line";
+                PurchHeadRec: Record "Purchase Request Header";
+                tempTot: Decimal;
+
+            begin
+                // PurchHeadRec.Reset();
+                // PurchHeadRec.SetRange("No.");
+
+                PurchLineRec.Reset();
+                PurchLineRec.SetRange("Line No.", "Line No.");
+                if PurchLineRec.FindFirst() then begin
+                    PurchLineRec.CalcSums(Amount);
+                    tempTot := PurchLineRec.Amount;
+                    Message('Total tempTot %1 = ', tempTot);
+                end;
+
+                "Total Amount" := tempTot;
+
+
+                Message('Total tempTot %1 = ', tempTot);
+            end;
+
+
+
+        }
+        field(9; "Total Amount"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            //  "Total Amount" = sum(Amount);
+            // trigger OnValidate()
+            // var
+
+            // begin
+            //     "Total Amount" = sum(Amount);
+            // end;
+
+            // FieldClass = FlowField;
+            // CalcFormula = sum("Purchase Request Line".Amount);
+
+            // trigger OnValidate()
+            // var
+            //     PurchLineRec: Record "Purchase Request Line";
+            //     PurchHeadRec: Record "Purchase Request Header";
+            //     tempTot: Decimal;
+
+            // begin
+            //     // PurchHeadRec.Reset();
+            //     // PurchHeadRec.SetRange("No.","Document No.");
+
+            //     PurchLineRec.Reset();
+            //     PurchLineRec.SetRange("Line No.", "Line No.");
+            //     if PurchLineRec.FindFirst() then begin
+            //         PurchLineRec.CalcSums(Amount);
+            //         tempTot := PurchLineRec.Amount;
+            //         Message('Total tempTot %1 = ', tempTot);
+            //     end;
+
+
+            //     // Message('Total tempTot %1 = ', tempTot);
+            // end;
+
 
         }
 
@@ -122,4 +206,8 @@ table 60101 "Purchase Request Line"
         }
     }
 
+    var
+        LstLineNoRec: Record "Purchase Request Line";
+
 }
+

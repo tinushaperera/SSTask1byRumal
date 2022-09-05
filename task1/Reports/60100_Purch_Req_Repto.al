@@ -1,7 +1,7 @@
 report 60100 "Purchase Request Report"
 {
     UsageCategory = ReportsAndAnalysis;
-    ApplicationArea = All;
+    //ApplicationArea = All;
     Caption = 'Purchase Request Report';
     DefaultLayout = RDLC;
     RDLCLayout = 'Report_Layouts/Purch_Req_Report.rdl';
@@ -28,7 +28,10 @@ report 60100 "Purchase Request Report"
             }
             column(Status; Status)
             {
+
             }
+
+
 
             //Get Company Info
 
@@ -50,6 +53,7 @@ report 60100 "Purchase Request Report"
             { }
             column(compWebSite; compRec.Company_Web)
             { }
+
 
             //Link Line Table
 
@@ -74,11 +78,17 @@ report 60100 "Purchase Request Report"
 
             }
 
-            trigger OnAfterGetRecord()
+            trigger OnAfterGetRecord() //On Pre Recors : To save Compute power 
 
             begin
                 compRec.Get();
                 compRec.CalcFields(Picture);
+
+                // if (Status = Status::Open) then begin
+
+                // end;
+
+
             end;
 
 
