@@ -13,6 +13,7 @@ page 60100 "Purchase Requests"
         {
             repeater(General)
             {
+
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
@@ -33,7 +34,15 @@ page 60100 "Purchase Requests"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Status field.';
                 }
+
+
+
             }
+            // field("Total Amount"; Rec."Total Amount")
+            // {
+            //     ApplicationArea = All;
+            //     ToolTip = 'Specifies the value of the Total Amount field.';
+            // }
         }
     }
 }

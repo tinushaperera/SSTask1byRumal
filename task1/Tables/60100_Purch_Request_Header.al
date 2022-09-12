@@ -12,33 +12,36 @@ table 60100 "Purchase Request Header"
             Caption = 'No.';
             DataClassification = ToBeClassified;
 
-            trigger OnValidate()
-            // var
-            //     todayDate: Date;
-            begin
-                // todayDate := Today();
-                "Document Date" := WorkDate();
-            end;
-
         }
         field(2; "Description"; Text[100])
         {
             Caption = 'Description ';
             DataClassification = ToBeClassified;
+            //IF turn on no one create new field without status set to open
+            //so i Disable it
+            // trigger OnValidate()
+            // begin
+            //     TestField(Status, Status::Open);
+            // end;
         }
 
         field(3; "Vendor No."; Code[20])
         {
             Caption = 'Vendor No.';
             DataClassification = ToBeClassified;
-            TableRelation = Vendor."No.";
+            TableRelation = Vendor;
+
 
             trigger OnValidate()
             var
                 venRec: Record Vendor;
+
             begin
-                venRec.Get("Vendor No.");
+
+
+                if venRec.get("Vendor No.") then;
                 "Vendor Name" := venRec.Name;
+
             end;
 
         }
@@ -64,10 +67,22 @@ table 60100 "Purchase Request Header"
         {
             Caption = 'Status';
             DataClassification = ToBeClassified;
-            OptionMembers = " ","Open","Released";
+            OptionMembers = " ",Open,"Released";
             OptionCaption = ' ,Open,Released';
 
         }
+
+        // field(7; "Total Amount"; Decimal)
+        // {
+        //     trigger OnValidate()
+        //     var
+        //         puchLineRec: Record "Purchase Request Line";
+        //     begin
+        //         puchLineRec.Get();
+        //         "Total Amount" := puchLineRec."Total Amount";
+        //     end;
+        // }
+
     }
     keys
     {
@@ -77,6 +92,39 @@ table 60100 "Purchase Request Header"
         }
     }
 
+
+    trigger OnInsert()
+
+    begin
+        "Document Date" := WorkDate();
+    end;
+
+    //This one is fully Functional bye bye 
+    // trigger OnModify()
+    // begin
+
+    //     if Status = Status::Released then
+    //         Error('Can not change/Enter data when document is Released');
+
+    // end;   /// to here^^^^^^
+
+
+
+    // trigger OnModify()
+    // var
+    //     venStsRec: Record "Purchase Request Header";
+
+    // begin
+    //     Message('hELO');
+    //     venStsRec.Get("No.");
+
+    //     if venStsRec.Status = venStsRec.Status::Released then
+    //         Error('Can not change/Enter data when document is Released');
+
+    // end;
+
+    var
+        purcLineRec: Record "Purchase Request Line";
 
 
 
