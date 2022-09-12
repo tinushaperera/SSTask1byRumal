@@ -54,11 +54,11 @@ page 60101 "Purchase Request"
                 // Editable = edit;
             }
 
-            field("Total Amount"; Rec."Total Amount")
-            {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Total Amount field.';
-            }
+            // field("Total Amount"; Rec."Total Amount")
+            // {
+            //     ApplicationArea = All;
+            //     ToolTip = 'Specifies the value of the Total Amount field.';
+            // }
 
 
         }
@@ -99,12 +99,35 @@ page 60101 "Purchase Request"
 
 
                 end;
+
+
+            }
+
+        }
+
+        area(Processing)
+        {
+            action("Create Purchase Order")
+            {
+                ApplicationArea = All;
+                Image = CreateInteraction;
+                Promoted = true;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    purchOrderbtn: Codeunit "Create Purchase Order FPR";
+                begin
+                    if Confirm('Do You Want TO Create The Purchase Order?', true) then
+                        purchOrderbtn.CreatePurchaseOrder(Rec);
+
+
+                end;
             }
         }
+
+
     }
-
-
-
 
     // trigger OnInit()
     // var
@@ -139,10 +162,10 @@ page 60101 "Purchase Request"
     //     else
     //         edit := true;
     // end;
-    trigger OnModifyRecord(): Boolean
-    begin
-        Message('hELO');
-    end;
+    // trigger OnModifyRecord(): Boolean
+    // begin
+    //     Message('hELO');
+    // end;
 
 
     var

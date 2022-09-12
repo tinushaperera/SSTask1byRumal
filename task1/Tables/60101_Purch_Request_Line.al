@@ -55,13 +55,14 @@ table 60101 "Purchase Request Line"
                 GLRec: Record "G/L Account";
             begin
                 if Type = Type::Item then begin
-                    item.Get("No.");
+                    if item.Get("No.") then;
                     Description := item.Description;
-                end;
-                if Type = Type::"GL Account" then begin
-                    GLRec.get("No.");
-                    Description := GLRec.Name;
-                end;
+                end
+                else
+                    if Type = Type::"GL Account" then begin
+                        if GLRec.get("No.") then;
+                        Description := GLRec.Name;
+                    end;
             end;
 
             // trigger OnValidate()
@@ -134,7 +135,7 @@ table 60101 "Purchase Request Line"
             trigger OnValidate()
             var
                 PurchLineRec: Record "Purchase Request Line";
-                PurchHeadRec: Record "Purchase Request Header";
+
                 tempTot: Decimal;
 
             begin
@@ -149,7 +150,7 @@ table 60101 "Purchase Request Line"
                     Message('Total tempTot %1 = ', tempTot);
                 end;
 
-                "Total Amount" := tempTot;
+                // "Total Amount" := tempTot;
 
 
                 Message('Total tempTot %1 = ', tempTot);
@@ -158,44 +159,44 @@ table 60101 "Purchase Request Line"
 
 
         }
-        field(9; "Total Amount"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-            //  "Total Amount" = sum(Amount);
-            // trigger OnValidate()
-            // var
+        // field(9; "Total Amount"; Decimal)
+        // {
+        //     DataClassification = ToBeClassified;
+        //     //  "Total Amount" = sum(Amount);
+        //     // trigger OnValidate()
+        //     // var
 
-            // begin
-            //     "Total Amount" = sum(Amount);
-            // end;
+        //     // begin
+        //     //     "Total Amount" = sum(Amount);
+        //     // end;
 
-            // FieldClass = FlowField;
-            // CalcFormula = sum("Purchase Request Line".Amount);
+        //     // FieldClass = FlowField;
+        //     // CalcFormula = sum("Purchase Request Line".Amount);
 
-            // trigger OnValidate()
-            // var
-            //     PurchLineRec: Record "Purchase Request Line";
-            //     PurchHeadRec: Record "Purchase Request Header";
-            //     tempTot: Decimal;
+        //     // trigger OnValidate()
+        //     // var
+        //     //     PurchLineRec: Record "Purchase Request Line";
+        //     //     PurchHeadRec: Record "Purchase Request Header";
+        //     //     tempTot: Decimal;
 
-            // begin
-            //     // PurchHeadRec.Reset();
-            //     // PurchHeadRec.SetRange("No.","Document No.");
+        //     // begin
+        //     //     // PurchHeadRec.Reset();
+        //     //     // PurchHeadRec.SetRange("No.","Document No.");
 
-            //     PurchLineRec.Reset();
-            //     PurchLineRec.SetRange("Line No.", "Line No.");
-            //     if PurchLineRec.FindFirst() then begin
-            //         PurchLineRec.CalcSums(Amount);
-            //         tempTot := PurchLineRec.Amount;
-            //         Message('Total tempTot %1 = ', tempTot);
-            //     end;
-
-
-            //     // Message('Total tempTot %1 = ', tempTot);
-            // end;
+        //     //     PurchLineRec.Reset();
+        //     //     PurchLineRec.SetRange("Line No.", "Line No.");
+        //     //     if PurchLineRec.FindFirst() then begin
+        //     //         PurchLineRec.CalcSums(Amount);
+        //     //         tempTot := PurchLineRec.Amount;
+        //     //         Message('Total tempTot %1 = ', tempTot);
+        //     //     end;
 
 
-        }
+        //     //     // Message('Total tempTot %1 = ', tempTot);
+        //     // end;
+
+
+        // }
 
     }
     keys
@@ -206,8 +207,18 @@ table 60101 "Purchase Request Line"
         }
     }
 
+
+    // trigger OnModify()
+    // begin
+    //     // PurchHeadRec.get("No.");
+    //     if PurchHeadRec.Status = PurchHeadRec.Status::Released then
+    //         Error('Can not change/Enter data when document is Released');
+
+    // end;
+
     var
         LstLineNoRec: Record "Purchase Request Line";
+        PurchHeadRec: Record "Purchase Request Header";
 
 }
 

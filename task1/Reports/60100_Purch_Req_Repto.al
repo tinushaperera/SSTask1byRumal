@@ -26,7 +26,7 @@ report 60100 "Purchase Request Report"
             column(DocumentDate; "Document Date")
             {
             }
-            column(Status; Status)
+            column(Status; repStatus)
             {
 
             }
@@ -84,10 +84,13 @@ report 60100 "Purchase Request Report"
                 compRec.Get();
                 compRec.CalcFields(Picture);
 
-                // if (Status = Status::Open) then begin
+                if Status = Status::Open then
+                    repStatus := 'Pending'
 
-                // end;
 
+                else
+                    if Status = Status::Released then
+                        repStatus := 'Approved';
 
             end;
 
@@ -115,6 +118,7 @@ report 60100 "Purchase Request Report"
 
     var
         compRec: Record "Company Information";
+        repStatus: Text[20];
 
 
 }

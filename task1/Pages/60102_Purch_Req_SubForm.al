@@ -10,11 +10,11 @@ page 60102 "Purchase Request Sub Form"
         {
             repeater(General)
             {
-                field("Total Amount"; Rec."Total Amount")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Total Amount field.';
-                }
+                // field("Total Amount"; Rec."Total Amount")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of the Total Amount field.';
+                // }
                 field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = All;

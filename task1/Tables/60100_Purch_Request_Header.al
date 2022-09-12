@@ -17,11 +17,12 @@ table 60100 "Purchase Request Header"
         {
             Caption = 'Description ';
             DataClassification = ToBeClassified;
-
-            trigger OnValidate()
-            begin
-                TestField(Status, Status::Open);
-            end;
+            //IF turn on no one create new field without status set to open
+            //so i Disable it
+            // trigger OnValidate()
+            // begin
+            //     TestField(Status, Status::Open);
+            // end;
         }
 
         field(3; "Vendor No."; Code[20])
@@ -71,16 +72,16 @@ table 60100 "Purchase Request Header"
 
         }
 
-        field(7; "Total Amount"; Decimal)
-        {
-            trigger OnValidate()
-            var
-                puchLineRec: Record "Purchase Request Line";
-            begin
-                puchLineRec.Get();
-                "Total Amount" := puchLineRec."Total Amount";
-            end;
-        }
+        // field(7; "Total Amount"; Decimal)
+        // {
+        //     trigger OnValidate()
+        //     var
+        //         puchLineRec: Record "Purchase Request Line";
+        //     begin
+        //         puchLineRec.Get();
+        //         "Total Amount" := puchLineRec."Total Amount";
+        //     end;
+        // }
 
     }
     keys
@@ -98,10 +99,17 @@ table 60100 "Purchase Request Header"
         "Document Date" := WorkDate();
     end;
 
-    trigger OnModify()
-    begin
-        Message('hELO');
-    end;
+    //This one is fully Functional bye bye 
+    // trigger OnModify()
+    // begin
+
+    //     if Status = Status::Released then
+    //         Error('Can not change/Enter data when document is Released');
+
+    // end;   /// to here^^^^^^
+
+
+
     // trigger OnModify()
     // var
     //     venStsRec: Record "Purchase Request Header";

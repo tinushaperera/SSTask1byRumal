@@ -38,11 +38,11 @@ page 60100 "Purchase Requests"
 
 
             }
-            field("Total Amount"; Rec."Total Amount")
-            {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Total Amount field.';
-            }
+            // field("Total Amount"; Rec."Total Amount")
+            // {
+            //     ApplicationArea = All;
+            //     ToolTip = 'Specifies the value of the Total Amount field.';
+            // }
         }
     }
 }
