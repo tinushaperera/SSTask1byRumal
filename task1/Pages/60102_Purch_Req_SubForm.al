@@ -7,7 +7,7 @@ page 60102 "Purchase Request Sub Form"
     layout
     {
         area(content)
-        {
+        { 
             repeater(General)
             {
                 // field("Total Amount"; Rec."Total Amount")

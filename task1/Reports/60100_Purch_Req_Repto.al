@@ -51,8 +51,8 @@ report 60100 "Purchase Request Report"
             { }
             column(compPicture; compRec.Picture)
             { }
-            column(compWebSite; compRec.Company_Web)
-            { }
+            /*column(compWebSite; compRec.Company_Web)
+            { }*/
 
 
             //Link Line Table
