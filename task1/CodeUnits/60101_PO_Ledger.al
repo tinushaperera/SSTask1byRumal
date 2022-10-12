@@ -9,15 +9,15 @@ codeunit 60101 "Purchase Order Ledger Ext"
 
     [EventSubscriber(ObjectType::Table, database::"Gen. Journal Line", 'OnAfterCopyGenJnlLineFromPurchHeader', '', true, true)]
     local procedure OnAfterCopyGenJnlLineFromPurchHeader(PurchaseHeader: Record "Purchase Header"; var GenJournalLine: Record "Gen. Journal Line")
-    var
-        purchaseLine: Record "Purchase Line";
+    // var
+    //     purchaseLine: Record "Purchase Line";
 
     begin
         GenJournalLine."LC No." := PurchaseHeader."LC No.";
         GenJournalLine.Remarks := PurchaseHeader.Remarks;
         GenJournalLine."LC Date" := PurchaseHeader."LC Date";
-        GenJournalLine."Total Weight" := purchaseLine."Total Weight";
-        GenJournalLine."Total Hight" := purchaseLine."Total Hight";
+        //GenJournalLine."Total Weight" := purchaseLine."Total Weight";
+        //GenJournalLine."Total Hight" := purchaseLine."Total Hight";
     end;
     //Try to find Purch Line
     // [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'onaftercopyfrompurch', 'ElementName', SkipOnMissingLicense, SkipOnMissingPermission)]
@@ -49,13 +49,14 @@ codeunit 60101 "Purchase Order Ledger Ext"
     end;
 
     //PurchHead >>> ItemJnl
-    [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", 'OnAfterCopyItemJnlLineFromPurchHeader', '', true, true)]
-    local procedure OnAfterCopyItemJnlLineFromPurchHeader(PurchHeader: Record "Purchase Header"; var ItemJnlLine: Record "Item Journal Line")
-    begin
-        ItemJnlLine."LC No." := PurchHeader."LC No.";
-        ItemJnlLine.Remarks := PurchHeader.Remarks;
-        ItemJnlLine."LC Date" := PurchHeader."LC Date";
-    end;
+    // [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", 'OnAfterCopyItemJnlLineFromPurchHeader', '', true, true)]
+    // local procedure OnAfterCopyItemJnlLineFromPurchHeader(PurchHeader: Record "Purchase Header"; var ItemJnlLine: Record "Item Journal Line")
+    // begin
+    //     ItemJnlLine."LC No." := PurchHeader."LC No.";
+    //     ItemJnlLine.Remarks := PurchHeader.Remarks;
+    //     ItemJnlLine."LC Date" := PurchHeader."LC Date";
+
+    // end;
 
     //PurchLine >>> ItemJnl
     [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", 'OnAfterCopyItemJnlLineFromPurchLine', '', true, true)]
@@ -65,14 +66,11 @@ codeunit 60101 "Purchase Order Ledger Ext"
         ItemJnlLine."Total Hight" := PurchLine."Total Hight";
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Item Ledger Entry", 'OnAfterCopyTrackingFromItemJnlLine', '', true, true)]
-    local procedure OnAfterCopyTrackingFromItemJnlLine(ItemJnlLine: Record "Item Journal Line"; var ItemLedgerEntry: Record "Item Ledger Entry")
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post Line", 'OnAfterInitItemLedgEntry', '', true, true)]
+    local procedure OnAfterCopyTrackingFromItemJnlLine(var NewItemLedgEntry: Record "Item Ledger Entry"; var ItemJournalLine: Record "Item Journal Line"; var ItemLedgEntryNo: Integer)
     begin
-        ItemLedgerEntry."LC No." := ItemJnlLine."LC No.";
-        ItemLedgerEntry.Remarks := ItemJnlLine.Remarks;
-        ItemLedgerEntry."LC Date" := ItemJnlLine."LC Date";
-        ItemLedgerEntry."Total Weight" := ItemJnlLine."Total Weight";
-        ItemLedgerEntry."Total Hight" := ItemJnlLine."Total Hight";
+        NewItemLedgEntry."Total Weight" := ItemJournalLine."Total Weight";
+        NewItemLedgEntry."Total Hight" := ItemJournalLine."Total Hight";
     end;
 
 
