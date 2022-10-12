@@ -16,8 +16,8 @@ codeunit 60101 "Purchase Order Ledger Ext"
         GenJournalLine."LC No." := PurchaseHeader."LC No.";
         GenJournalLine.Remarks := PurchaseHeader.Remarks;
         GenJournalLine."LC Date" := PurchaseHeader."LC Date";
-        GenJournalLine."Total Weight" := purchaseLine."Total Weight";
-        GenJournalLine."Total Hight" := purchaseLine."Total Hight";
+        //GenJournalLine."Total Weight" := purchaseLine."Total Weight";
+        //GenJournalLine."Total Hight" := purchaseLine."Total Hight";
     end;
     //Try to find Purch Line
     // [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'onaftercopyfrompurch', 'ElementName', SkipOnMissingLicense, SkipOnMissingPermission)]
@@ -28,7 +28,7 @@ codeunit 60101 "Purchase Order Ledger Ext"
 
     //Gen Jnl >>> GLEntry
     [EventSubscriber(ObjectType::Table, database::"G/L Entry", 'OnAfterCopyGLEntryFromGenJnlLine', '', true, true)]
-    local procedure OnAfterCopyGLEntryFromGenJnlLine(var GLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line")
+    local procedure OnAfterCopyGLEntryFromGenJnlLine(var GLEntry: Record "G/L Entry";var GenJournalLine: Record "Gen. Journal Line")
     begin
         GLEntry."LC No." := GenJournalLine."LC No.";
         GLEntry.Remarks := GenJournalLine.Remarks;
@@ -74,8 +74,6 @@ codeunit 60101 "Purchase Order Ledger Ext"
         ItemLedgerEntry."Total Weight" := ItemJnlLine."Total Weight";
         ItemLedgerEntry."Total Hight" := ItemJnlLine."Total Hight";
     end;
-
-
 
 
 
