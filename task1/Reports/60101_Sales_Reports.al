@@ -16,7 +16,7 @@ report 60101 "Sales Reports"
             column(Document_No_; "Document No.")
             {
             }
-            column(BilltoCustomerNo_SalesInvoiceLine; "Bill-to Customer No.")
+            column(Sell_to_Customer_No_; invCusName)
             {
             }
             column(No_SalesInvoiceLine; "No.")
@@ -35,9 +35,21 @@ report 60101 "Sales Reports"
 
             trigger OnPreDataItem()
             var
-            //salesHead:
+            //invCusName : Text;
             begin
                 SetRange("Posting Date", st_date, ed_date);
+
+                // if recCustm.get("Sell-to Customer No.") then;
+                //     invCusName := recCustm.Name;
+
+            end;
+
+            trigger OnAfterGetRecord()
+
+
+            begin
+                if recCustm.get("Sell-to Customer No.") then;
+                invCusName := recCustm.Name;
             end;
 
         }
@@ -50,7 +62,7 @@ report 60101 "Sales Reports"
             column(DocumentNo_SalesCrMemoLine; "Document No.")
             {
             }
-            column(BilltoCustomerNo_SalesCrMemoLine; "Bill-to Customer No.")
+            column(Sell_to_Customer_No_cr; CrCusName)
             {
             }
             column(No_SalesCrMemoLine; "No.")
@@ -71,6 +83,14 @@ report 60101 "Sales Reports"
                 myInt: Integer;
             begin
                 SetRange("Posting Date", st_date, ed_date);
+            end;
+
+            trigger OnAfterGetRecord()
+            // var
+            //     myInt: Integer;
+            begin
+                if recCustm.get("Sell-to Customer No.") then;
+                CrCusName := recCustm.Name;
             end;
         }
     }
@@ -129,5 +149,8 @@ report 60101 "Sales Reports"
         myInt: Integer;
         st_date: Date;
         ed_date: Date;
+        recCustm: Record Customer;
+        invCusName: Text;
+        CrCusName: Text;
 
 }

@@ -41,6 +41,7 @@ table 60100 "Purchase Request Header"
 
 
                 if venRec.get("Vendor No.") then;
+
                 "Vendor Name" := venRec.Name;
                 //test."Document Type"::
 
