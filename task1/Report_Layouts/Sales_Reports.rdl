@@ -11,6 +11,70 @@
       <rd:DataSourceID>43adacdd-9139-4123-a951-af41141bac9e</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="PostingDate_SalesInvoiceLine">
+          <DataField>PostingDate_SalesInvoiceLine</DataField>
+        </Field>
+        <Field Name="Document_No_">
+          <DataField>Document_No_</DataField>
+        </Field>
+        <Field Name="Sell_to_Customer_No_">
+          <DataField>Sell_to_Customer_No_</DataField>
+        </Field>
+        <Field Name="No_SalesInvoiceLine">
+          <DataField>No_SalesInvoiceLine</DataField>
+        </Field>
+        <Field Name="Description_SalesInvoiceLine">
+          <DataField>Description_SalesInvoiceLine</DataField>
+        </Field>
+        <Field Name="Quantity_SalesInvoiceLine">
+          <DataField>Quantity_SalesInvoiceLine</DataField>
+        </Field>
+        <Field Name="Quantity_SalesInvoiceLineFormat">
+          <DataField>Quantity_SalesInvoiceLineFormat</DataField>
+        </Field>
+        <Field Name="Amount_SalesInvoiceLine">
+          <DataField>Amount_SalesInvoiceLine</DataField>
+        </Field>
+        <Field Name="Amount_SalesInvoiceLineFormat">
+          <DataField>Amount_SalesInvoiceLineFormat</DataField>
+        </Field>
+        <Field Name="PostingDate_SalesCrMemoLine">
+          <DataField>PostingDate_SalesCrMemoLine</DataField>
+        </Field>
+        <Field Name="DocumentNo_SalesCrMemoLine">
+          <DataField>DocumentNo_SalesCrMemoLine</DataField>
+        </Field>
+        <Field Name="Sell_to_Customer_No_cr">
+          <DataField>Sell_to_Customer_No_cr</DataField>
+        </Field>
+        <Field Name="No_SalesCrMemoLine">
+          <DataField>No_SalesCrMemoLine</DataField>
+        </Field>
+        <Field Name="Description_SalesCrMemoLine">
+          <DataField>Description_SalesCrMemoLine</DataField>
+        </Field>
+        <Field Name="Quantity_SalesCrMemoLine">
+          <DataField>Quantity_SalesCrMemoLine</DataField>
+        </Field>
+        <Field Name="Quantity_SalesCrMemoLineFormat">
+          <DataField>Quantity_SalesCrMemoLineFormat</DataField>
+        </Field>
+        <Field Name="Amount_SalesCrMemoLine">
+          <DataField>Amount_SalesCrMemoLine</DataField>
+        </Field>
+        <Field Name="Amount_SalesCrMemoLineFormat">
+          <DataField>Amount_SalesCrMemoLineFormat</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -358,10 +422,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!PostingDate_SalesInvoiceLine.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>d</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>PostingDate_SalesInvoiceLine</rd:DefaultName>
@@ -391,7 +459,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Document_No_</rd:DefaultName>
@@ -421,7 +491,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Sell_to_Customer_No_</rd:DefaultName>
@@ -451,7 +523,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>No_SalesInvoiceLine</rd:DefaultName>
@@ -481,7 +555,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Description_SalesInvoiceLine</rd:DefaultName>
@@ -508,10 +584,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Quantity_SalesInvoiceLine.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Quantity_SalesInvoiceLine</rd:DefaultName>
@@ -538,10 +618,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Amount_SalesInvoiceLine.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Amount_SalesInvoiceLine</rd:DefaultName>
@@ -612,10 +696,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Sum(Fields!Quantity_SalesInvoiceLine.Value)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox227</rd:DefaultName>
@@ -642,10 +730,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Sum(Fields!Amount_SalesInvoiceLine.Value)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox228</rd:DefaultName>
@@ -723,10 +815,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!PostingDate_SalesCrMemoLine.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>d</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>PostingDate_SalesCrMemoLine1</rd:DefaultName>
@@ -756,7 +852,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>DocumentNo_SalesCrMemoLine1</rd:DefaultName>
@@ -786,7 +884,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Sell_to_Customer_No_cr</rd:DefaultName>
@@ -816,7 +916,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>No_SalesCrMemoLine1</rd:DefaultName>
@@ -846,7 +948,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Description_SalesCrMemoLine1</rd:DefaultName>
@@ -873,10 +977,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Quantity_SalesCrMemoLine.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Quantity_SalesCrMemoLine1</rd:DefaultName>
@@ -903,10 +1011,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Amount_SalesCrMemoLine.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Amount_SalesCrMemoLine1</rd:DefaultName>
@@ -992,10 +1104,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Sum(Fields!Quantity_SalesCrMemoLine.Value)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox235</rd:DefaultName>
@@ -1022,10 +1138,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Sum(Fields!Amount_SalesCrMemoLine.Value)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox236</rd:DefaultName>
@@ -1098,10 +1218,16 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=(Sum(Fields!Quantity_SalesInvoiceLine.Value))-(Sum(Fields!Quantity_SalesCrMemoLine.Value))</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>Red</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox243</rd:DefaultName>
@@ -1128,10 +1254,16 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=(Sum(Fields!Amount_SalesInvoiceLine.Value))-(sum(Fields!Amount_SalesCrMemoLine.Value))</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>Red</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox244</rd:DefaultName>
@@ -1229,6 +1361,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1268,68 +1406,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="PostingDate_SalesInvoiceLine">
-          <DataField>PostingDate_SalesInvoiceLine</DataField>
-        </Field>
-        <Field Name="Document_No_">
-          <DataField>Document_No_</DataField>
-        </Field>
-        <Field Name="Sell_to_Customer_No_">
-          <DataField>Sell_to_Customer_No_</DataField>
-        </Field>
-        <Field Name="No_SalesInvoiceLine">
-          <DataField>No_SalesInvoiceLine</DataField>
-        </Field>
-        <Field Name="Description_SalesInvoiceLine">
-          <DataField>Description_SalesInvoiceLine</DataField>
-        </Field>
-        <Field Name="Quantity_SalesInvoiceLine">
-          <DataField>Quantity_SalesInvoiceLine</DataField>
-        </Field>
-        <Field Name="Quantity_SalesInvoiceLineFormat">
-          <DataField>Quantity_SalesInvoiceLineFormat</DataField>
-        </Field>
-        <Field Name="Amount_SalesInvoiceLine">
-          <DataField>Amount_SalesInvoiceLine</DataField>
-        </Field>
-        <Field Name="Amount_SalesInvoiceLineFormat">
-          <DataField>Amount_SalesInvoiceLineFormat</DataField>
-        </Field>
-        <Field Name="PostingDate_SalesCrMemoLine">
-          <DataField>PostingDate_SalesCrMemoLine</DataField>
-        </Field>
-        <Field Name="DocumentNo_SalesCrMemoLine">
-          <DataField>DocumentNo_SalesCrMemoLine</DataField>
-        </Field>
-        <Field Name="Sell_to_Customer_No_cr">
-          <DataField>Sell_to_Customer_No_cr</DataField>
-        </Field>
-        <Field Name="No_SalesCrMemoLine">
-          <DataField>No_SalesCrMemoLine</DataField>
-        </Field>
-        <Field Name="Description_SalesCrMemoLine">
-          <DataField>Description_SalesCrMemoLine</DataField>
-        </Field>
-        <Field Name="Quantity_SalesCrMemoLine">
-          <DataField>Quantity_SalesCrMemoLine</DataField>
-        </Field>
-        <Field Name="Quantity_SalesCrMemoLineFormat">
-          <DataField>Quantity_SalesCrMemoLineFormat</DataField>
-        </Field>
-        <Field Name="Amount_SalesCrMemoLine">
-          <DataField>Amount_SalesCrMemoLine</DataField>
-        </Field>
-        <Field Name="Amount_SalesCrMemoLineFormat">
-          <DataField>Amount_SalesCrMemoLineFormat</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
