@@ -35,12 +35,15 @@ table 60100 "Purchase Request Header"
             trigger OnValidate()
             var
                 venRec: Record Vendor;
+            //test : Record "Purchase Header";
 
             begin
 
 
                 if venRec.get("Vendor No.") then;
+
                 "Vendor Name" := venRec.Name;
+                //test."Document Type"::
 
             end;
 

@@ -1363,9 +1363,6 @@ End Function
         <Field Name="compPicture">
           <DataField>compPicture</DataField>
         </Field>
-        <Field Name="compWebSite">
-          <DataField>compWebSite</DataField>
-        </Field>
         <Field Name="Type">
           <DataField>Type</DataField>
         </Field>
