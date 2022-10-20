@@ -154,3 +154,4 @@ report 60101 "Sales Reports"
         CrCusName: Text;
 
 }
+ 
