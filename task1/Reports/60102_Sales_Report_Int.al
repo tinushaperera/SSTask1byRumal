@@ -140,11 +140,12 @@ report 60102 "Sales Report Int"
     // }
 
     var
-        myInt: Integer;
+        //myInt: Integer;
         tempSalesInv: Record "Sales Invoice Line" temporary;
-        tempSalesCrMemo: Record "Sales Cr.Memo Line" temporary;
+        //tempSalesCrMemo: Record "Sales Cr.Memo Line" temporary;
         st_date: Date;
         ed_date: Date;
-        InvStDate: Date;
-        InvEdDate: Date;
+        invCusName : text;
+        crmCusName : text;
+        recCust : Record Customer;
 }
